@@ -1,0 +1,211 @@
+@import url("https://fonts.googleapis.com/css2?family=Imperial+Script&display=swap");
+
+html {
+  font-size: 68.75%;
+}
+
+body {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  overflow: hidden;
+}
+
+main {
+  display: flex;
+  gap: 0rem 20rem;
+  align-items: center;
+  margin: auto 0px;
+  justify-content: center;
+}
+
+header {
+  font-family: "Imperial Script", cursive;
+  font-weight: 500;
+  padding-top: 4rem;
+  font-size: 5.5rem;
+  width: 100%;
+  text-align: center;
+}
+header::after {
+  content: "";
+  background: url("../images/kingHead.png") no-repeat center center;
+  background-size: cover;
+  display: inline-block;
+  margin-left: 15px;
+  width: 30px;
+  height: 30px;
+}
+
+/* 3D - FlipCard */
+
+.wrapper-father {
+  perspective: 80rem;
+  cursor: pointer;
+  border: 0.1rem dashed rgb(90, 89, 89);
+  border-radius: 2rem;
+}
+
+.wrapper {
+  transform-style: preserve-3d;
+  width: 20rem;
+  height: 30rem;
+  position: relative;
+  border-radius: 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: 0.7s;
+}
+
+.wrapper .back {
+  position: absolute;
+  border-radius: inherit;
+  width: 100%;
+  height: 100%;
+  background: url("../images/queen-card-back.webp") no-repeat center;
+  border: 0.15rem solid rgb(3, 3, 3);
+  background-size: 21rem 32rem;
+  backface-visibility: hidden;
+}
+.wrapper .front {
+  position: absolute;
+  border: 0.15rem solid rgb(3, 3, 3);
+  backface-visibility: hidden;
+  border-radius: inherit;
+  width: 100%;
+  height: 100%;
+  rotate: y 180deg;
+  background: url("../images/queen-heads.jpg") no-repeat center;
+  background-size: 20rem 30.6rem;
+  backface-visibility: hidden;
+}
+
+.wrapper-father:hover > .wrapper {
+  rotate: y 180deg;
+  animation: voando 2s 1 ease-out;
+  animation-delay: 0.2s;
+}
+
+@keyframes voando {
+  0% {
+    rotate: 0deg;
+    transform-origin: top;
+  }
+
+  10% {
+    transform: rotateY(1turn);
+    transform-origin: top;
+  }
+
+  50% {
+    scale: 0.1;
+    transform: rotateY(5turn) translate(0rem, 40rem);
+  }
+
+  100% {
+    rotate: 360deg;
+    transform-origin: top;
+  }
+}
+
+/* Normal FlipCard */
+
+.wrapper-father:first-child {
+  border: none;
+}
+.normal_flipcard {
+  transform-style: preserve-3d;
+  width: 20rem;
+  height: 30rem;
+  position: relative;
+  border-radius: 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: 0.7s;
+}
+
+.normal_flipcard .back {
+  position: absolute;
+  border-radius: inherit;
+  width: 100%;
+  height: 100%;
+  background: url("../images/king-card-back.webp") no-repeat center center;
+  border: 0.15rem solid rgb(3, 3, 3);
+  background-size: 20.9rem 30rem;
+  backface-visibility: hidden;
+}
+.normal_flipcard .front {
+  position: absolute;
+  border: 0.15rem solid rgb(3, 3, 3);
+  backface-visibility: hidden;
+  border-radius: inherit;
+  width: 100%;
+  height: 100%;
+  rotate: y 180deg;
+  background: url("../images/king-heads.png") no-repeat center;
+  background-size: 100%;
+  backface-visibility: hidden;
+}
+
+.wrapper-father:hover > .normal_flipcard {
+  rotate: y 180deg;
+}
+
+/* Black lateral */
+
+.lateral {
+  position: fixed;
+  background-color: black;
+  width: 5rem;
+  height: 100vh;
+  box-sizing: border-box;
+  border: 0.1rem solid gray;
+  color: #fff;
+  top: 0;
+  display: flex;
+  text-align: left;
+  align-items: center;
+  justify-content: center;
+}
+.lateral p {
+  writing-mode: vertical-rl;
+  text-orientation: upright;
+  text-transform: uppercase;
+  font-size: 2.5rem;
+  letter-spacing: 2rem;
+  font-family: sans-serif;
+}
+
+.left-strip {
+  left: 0;
+}
+
+.right-strip {
+  right: 0;
+}
+
+.creator {
+  position: absolute;
+  padding: 1.5rem 6rem;
+  background: #8c7753;
+  background: linear-gradient(
+    90deg,
+    rgba(140, 119, 83, 1) 0%,
+    rgba(231, 195, 125, 1) 50%,
+    rgba(138, 117, 73, 1) 100%
+  );
+  top: 1.5rem;
+  right: 0rem;
+  text-shadow: 2px 2px 5px black;
+  color: rgb(255, 255, 255);
+  font-size: 2rem;
+  rotate: 40deg;
+  transform: translate(3rem, -3.5rem);
+}
+
+.creator_portable{
+  display: none;
+}
